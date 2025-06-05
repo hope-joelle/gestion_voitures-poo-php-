@@ -1,0 +1,30 @@
+<?php
+
+class User {
+    
+    private $email;
+    private $password;
+
+    public function __construct($email, $password) {
+        
+        $this->email = $email;
+        $this->password = $password;
+    }
+
+    
+    // Getters
+    public function getEmail() {
+        return $this->email;
+    }
+    public function getPassword() {
+        return $this->password;
+    }
+    // Setters
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+}
+// function qui permet à l'utlisateur de se connecter avec son email et son mot de passe
