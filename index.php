@@ -1,39 +1,26 @@
 <?php
-
+//
 session_start();
-require_once 'Voiture.php'; 
-require_once 'Users.php';
+$_SESSION['Voiture'] = [];
+require_once 'Voitures.php'; 
 
 
-if (!isset($_SESSION['voiture'])) {
-    $_SESSION['voiture'] = [];
-}
 
 // Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $marque = $_POST['marque'];
     $modele = $_POST['modele'];
     $annee = $_POST['annee'];
-    $prix = $_POST['prix']?? null;
-   
+    $prix = $_POST['prix'];
 
-    $voiture = new Voiture($marque, $modele, $annee, $prix);
-    $_SESSION['voiture'][] = $voiture;
+    $voiture = new Voitures($marque, $modele, $annee, $prix);
+    $_SESSION['Voiture'] = $voiture;
 
-    $user = new user($mail,$password);
-    if ($user->connexionEmail($_POST['email'], $_POST['password'])) {
-        // je stocke les information des user dans la session pour que les données ne disparaissent pas
-        $_SESSION['user'] = $user->getEmail(); // je stocke l'email de l'utilisateur
-        $_SESSION['password'] = $user->getPassword(); // je stocke le mot de passe de l'utilisateur
-        echo "Connexion réussie.";
-    } else {
-        echo "Échec de la connexion.";
-    }
 }
-// formulaire de la voiture
 ?>
-<!DOCTYPE html>
-<html lang="fr">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,14 +41,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="prix">Prix :</label>
         <input type="number" id="prix" name="prix" required><br>
 
-        <button type="submit">Créer</button>
-      
-    
-    
-    
-    
+        <input type="submit"></input>
     
     </form>
+     <br>
+    <h2>Liste des voitures créées :</h2>
+    <ul>
+        <?php
+        if (!empty($_SESSION['Voiture'])) {
+            $voiture = $_SESSION['Voiture'];
+            echo "<li>" . $voiture->getDetails() . "</li>";
+        } else {
+            echo "<li>Aucune oiture créée.</li>";
+        }
+        ?>
 </body>
-</html>
 <?php

@@ -1,6 +1,6 @@
 <?php
 
-class Voiture {
+class Voitures {
     private $marque;
     private $modele;
     private $annee;
