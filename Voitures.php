@@ -13,10 +13,7 @@ class Voiture {
         $this->prix = $prix;
     }
 
-    public function __toString() {
-        return "Voiture: {$this->marque} {$this->modele}, Année: {$this->annee}, prix: {$this->prix}";
-    }
-
+  
     public function getDetails() {
         return "Voiture: {$this->marque} {$this->modele}, Année: {$this->annee}, Prix: {$this->prix}";
     }
