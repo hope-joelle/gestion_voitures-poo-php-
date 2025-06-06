@@ -27,4 +27,6 @@ class User {
         $this->password = $password;
     }
 }
-// function qui permet à l'utlisateur de se connecter avec son email et son mot de passe
+// modele
+
+function

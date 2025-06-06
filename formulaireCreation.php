@@ -9,12 +9,13 @@ require_once 'Voitures.php';
 // Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $id = $_POST['id'];
     $marque = $_POST['marque'];
     $modele = $_POST['modele'];
     $annee = $_POST['annee'];
     $prix = $_POST['prix'];
 
-    $voiture = new Voitures($marque, $modele, $annee, $prix);
+    $voiture = new Voitures( $id ,$marque, $modele, $annee, $prix);
     $_SESSION['Voiture'] = $voiture;
 
 }
@@ -29,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <h1>Créer une voiture</h1>
     <form method="POST">
+        <label for="id">ID :</label>
+        <input type="text" id="id" name="id" required><br>
         <label for="marque">Marque :</label>
         <input type="text" id="marque" name="marque" required><br>
 
