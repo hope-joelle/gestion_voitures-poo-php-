@@ -27,6 +27,5 @@ class User {
         $this->password = $password;
     }
 }
-// modele
 
-function
+

@@ -9,7 +9,7 @@
 // I / / Classe Voiture
 
 class Voitures {
-    // Unique identifier for the car
+
     private $id;
     private $marque;
     private $modele;
